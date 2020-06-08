@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Book NodeJS</title>
+    <script src="https://kit.fontawesome.com/57aeb32e6c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=" crossorigin="anonymous" />
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+        #nav-mobile:nth-child(1){
+            display: block!important;
+        }
+        .sidenav-trigger{
+            display: block!important;
+        }
+        .sidenav-trigger .material-icons{
+            font-size: 2em;
+        }
+        .modal{
+            max-height: unset!important;
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <div class="navbar-fixed">
+        <nav class="grey darken-3">
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger">
+                        <i class="material-icons left">menu</i>
+                    </a>
+                </li>
+            </ul>
+          <span class="brand-logo center">Story Books</span>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <% if(typeof user === 'undefined') {%> 
+            <li><a href="/users/stories" class=""><i class="material-icons left">library_books</i>Public Stories</a></li>
+              <% }else{ %>
+                <li><span style="margin-right: 10px;">Welcome <%= user.firstName %></span></li>
+                <li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+              <% } %> 
+        </ul>
+        </div>
+      </nav>
+    </div>
+    
+    <ul id="slide-out" class="sidenav">
+        
+        <% if(typeof user === 'undefined') {%> 
+            <li>
+            <a class="btn waves-effect waves-light  red darken-2" href="/auth/google">
+                <i class="fab fa-google" style="color: aliceblue;"></i> <span>Login With Google</span>  
+            </a>
+        </li>
+        <li><a href="/about"><i class="material-icons left">class</i>About</a></li>
+        <li>
+            <a href="/users/stories" class=""><i class="material-icons left">library_books</i>Public Stories</a></li>
+            <% }else{ %>
+                <li style="display: flex; justify-content: flex-start; align-items: center; padding: 1em 2em;">
+                    <div style="height: 2.5em; width: 2.5em;">
+                        <img src="<%= user.avatar  %>" alt="" class="circle responsive-img">
+                    </div> 
+                    <p class="center flow-text" style="margin-left: 1em;"><%= user.firstName %> <%= user.lastName %></p>
+                </li>
+                <li><a href="/users/dashboard" class=""><i class="fas fa-2x fa-user-cog"></i> Dashboard</a></li>
+                <li><a href="/users/stories/<%= user._id  %>"><i class="fas fa-2x fa-user-tag"></i> My Stories</a></li>
+                <li><a href="/users/stories" class=""><i class="material-icons left">library_books</i>Public Stories</a></li>
+                <li><a href="/auth/logout"><i class="fas fa-2x fa-sign-out-alt"></i> Logout</a></li>
+              <% } %>
+    </ul>
+    <% if(typeof user !== 'undefined') {%> 
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red" href="/users/story/new">
+          <i class="large material-icons">add</i>
+        </a>
+    </div>
+<% } %> 

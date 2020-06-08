@@ -1,0 +1,35 @@
+<%- include ('./partials/_header') %>
+    <div class="container">
+        <h2>Welcome <%= user.firstName %> </h2>
+        <h5>Your Stories</h5>
+        <hr>
+        <table class="highlight responsive-table">
+            <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th></th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <% stories.forEach(story => { %>
+                <tr style="text-transform: capitalize;">
+                    <td> <a href="/users/story-view/<%= story._id %>"><%= story.title %> </a></td>
+                    <td><%= story.createdAt  %></td>
+                    <td><%= story.status %> </td>
+                    <td>
+                        <a class="waves-effect waves-light btn teal darken-1" href="/users/story/edit/<%= story._id %>"><i class="material-icons left">mode_edit</i>Edit</a>
+                        <form action="/users/story/delete/<%= story._id  %>?_method=DELETE" method="post" style="display: inline;">
+                            <button class="btn waves-effect waves-light red" type="submit">
+                                <i class="material-icons left">clear</i>Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+              <% }) %> 
+            </tbody>
+          </table>
+    </div>
+<%- include ('./partials/_footer') %> 
