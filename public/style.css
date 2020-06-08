@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+#nav-mobile:nth-child(1){
+    display: block!important;
+}
+.sidenav-trigger{
+    display: block!important;
+}
+.sidenav-trigger .material-icons{
+    font-size: 2em;
+}
+.modal{
+    max-height: unset!important;
+}
+::-webkit-scrollbar{
+    width: 0;
+}

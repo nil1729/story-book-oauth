@@ -11,6 +11,8 @@ const config = require('config');
 
 // Database Connect
 connectDB();
+
+
 // Passport Strategy initialize
 passportStrategy(passport);
 
