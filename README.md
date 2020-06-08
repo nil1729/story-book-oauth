@@ -1,7 +1,7 @@
 ## Story Book
 ### Story Books is a Web App built using Express and Google oAuth for authentication
 #### This Site is live [here](https://story--book.herokuapp.com/).
-#### Project idea: Udemy Course by [Traversy Media](https://www.udemy.com/user/brad-traversy/)
+#### Project idea adpted from a Udemy Course by [Traversy Media](https://www.udemy.com/user/brad-traversy/)
 ---
 #### Local Environment Setup
 1. Clone this Repository
