@@ -115,6 +115,9 @@ main {
 #card-action-pos{
     position: absolute; bottom: 0; width: 100%;
 }
+.ml-0{
+    margin-left: 0!important;
+}
 @media only screen and (max-width: 600px){
     .flow-text{
         font-size: 1.5em;

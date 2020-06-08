@@ -8,6 +8,9 @@
                 <div class="card center card-public">
                   <% if( typeof user !== 'undefined' && story.user._id.equals(user._id)){ %> 
                     <div class="card-image">
+                      <% if(story.status === 'private'){ %> 
+                      <span class="new badge left ml-0 green" data-badge-caption="Private"></span>
+                      <% } %> 
                     <a href="/users/story/edit/<%= story._id %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
                   </div>
                 <% } %> 
