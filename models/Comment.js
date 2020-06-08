@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const commentSchema = mongoose.Schema({
     author: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     },
     story:{
         type: mongoose.Schema.Types.ObjectId,
@@ -15,7 +15,7 @@ const commentSchema = mongoose.Schema({
     dbDate:{
         type: Date,
         required: true,
-        default: Date.now()
+        default: new Date()
     },
     createdAt: {
         type: String,

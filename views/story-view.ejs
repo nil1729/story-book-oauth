@@ -40,10 +40,10 @@
                         <p class="p-l-text"><%= comment.comment  %> </p>
                         <div class="grey lighten-2 profile-badge m-1-0">
                         <div class="avatar-stamp-comment">
-                            <img src="<%= story.user.avatar  %>" alt="" class="circle responsive-img">
+                            <img src="<%= comment.author.avatar  %>" alt="" class="circle responsive-img">
                         </div>
-                        <a class="m-0-10-0-5" href="/users/stories/<%= story.user._id  %>">
-                            <%= story.user.firstName  %> <%= story.user.lastName %>
+                        <a class="m-0-10-0-5" href="/users/stories/<%= comment.author._id  %>">
+                            <%= comment.author.firstName  %> <%= comment.author.lastName %>
                         </a>
                     </div>
                     <p class="grey-text"><%= comment.createdAt %></p>

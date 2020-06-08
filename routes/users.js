@@ -88,7 +88,7 @@ router.delete('/story/delete/:id', async (req, res) => {
 router.get('/story-view/:id', async (req, res) => {
     try {
         const story = await Story.findById(req.params.id).populate('user');
-        const comments = await Comment.find({story: story._id}).sort({dbDate: -1});
+        const comments = await Comment.find({story: story._id}).populate('author').sort({dbDate: -1});
         if((story && story.status === 'public') || (story.status === 'private' && story.user.equals(req.user._id))){
             res.render('story-view', {story, comments, user: req.user}); 
         }else{
@@ -125,7 +125,7 @@ router.get('/stories/:id', async (req, res) => {
 // Add Comment
 router.post('/stories/comments/:id', checkAuthentication, async (req, res) => {
     const newComment = {
-        author: `${req.user.firstName} ${req.user.lastName}`,
+        author: req.user._id,
         comment: req.body.comment,
         createdAt: moment(new Date()).format("MMMM Do YYYY"),
         story: req.params.id
