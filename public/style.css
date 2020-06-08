@@ -22,3 +22,102 @@ main {
 ::-webkit-scrollbar{
     width: 0;
 }
+.s-text{
+    font-size: 1.3em;
+}
+.p-text{
+    font-size: 14px;
+}
+.p-l-text{
+    font-size: 1.2em;
+}
+.capital-text {
+    text-transform: capitalize;
+}
+.d-inline{
+    display: inline;
+}
+.btn-login{
+    font-size: 1.2em; 
+    margin-left: 5px;
+}
+.ml-1{
+    margin-left: 1em;
+}
+.m-1-0{
+    margin: 1em 0;
+}
+.mt-2{
+    margin-top: 2em;
+}
+.mb-2{
+    margin-bottom: 2em;
+}
+.m-0-10-0-5{
+    margin: 0 10px 0 5px;
+}
+.mr-10{
+    margin-right: 10px;
+}
+.mt-4{
+    margin-top: 4em;
+}
+#border-circle{
+    border-radius: 50%;
+}
+.d-flex-start{
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+}
+.p-1-2{
+    padding: 1em 2em;
+}
+.d-flex-column-center{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+.card-public{
+    min-height: 20rem; 
+    position: relative;
+}
+.card-img-profile{
+    height: 5em; 
+    width: 5em; 
+    margin-bottom: 1em;
+}
+.profile-badge{
+    width: fit-content;
+    display: flex; 
+    justify-content: space-evenly; 
+    align-items: center;
+    border-radius: 30px;
+}
+.card-avatar{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+    margin: 1em auto;
+}
+.avatar-stamp{
+    height: 2.5em; 
+    width: 2.5em;
+}
+.avatar-stamp-comment{
+    height: 2em; 
+    width: 2em;
+}
+.avatar-name{
+    margin: 0 10px;
+}
+#card-action-pos{
+    position: absolute; bottom: 0; width: 100%;
+}
+@media only screen and (max-width: 600px){
+    .flow-text{
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+}

@@ -1,44 +1,25 @@
 <%- include ('./partials/_header.ejs')  %>
 <div class="container">
-    <h3><%= typeof view !== 'undefined' && view === 'public'?'Public': typeof user!=='undefined' && owner._id.equals(user._id) ? 'My': `${owner.firstName}'s`%>  
-      Stories</h3>
-    <div class="row story-container" style="margin-top: 2em;">
+    <h3><%= typeof view !== 'undefined' && view === 'public'?'Public': typeof user!=='undefined' && owner._id.equals(user._id) ? 'My': `${owner.firstName}'s`%>  Stories</h3>
+    <div class="row story-container mt-2">
         <% stories.forEach(story => { %>
           <% if(story.status === 'public' || ( typeof user !== 'undefined' && story.status === 'private' && story.user._id.equals(user._id))) {%> 
-            <div class="col s12 m4" style="margin-bottom: 2em;">
-                <div class="card center" style="min-height: 20rem; position: relative;">
+            <div class="col s12 m4 mb-2">
+                <div class="card center card-public">
                   <% if( typeof user !== 'undefined' && story.user._id.equals(user._id)){ %> 
                     <div class="card-image">
                     <a href="/users/story/edit/<%= story._id %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
                   </div>
                 <% } %> 
-                  <div class="card-content" style="text-transform: capitalize;">
-                    <p class="flow-text">
-                        <%= story.title  %> 
-                    </p>
-                    <p style="font-size: 14px;">
-                        <%= story.details.substr(0, 100) %> ....... 
-                    </p>
-                    <div style="position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, 0%);
-                    width: fit-content;
-                    display: flex; 
-                    justify-content: space-evenly; 
-                    align-items: center;
-                    margin: 1em auto;
-                    border-radius: 30px;"
-                    class="grey lighten-2">
-                        <div style="height: 2.5em; width: 2.5em;">
-                            <img src="<%= story.user.avatar  %>" alt="" class="circle responsive-img">
-                        </div>
-                        <a style="margin: 0 10px;" href="/users/stories/<%= story.user._id  %>">
-                            <%= story.user.firstName  %> <%= story.user.lastName %>
-                        </a>
+                  <div class="card-content capital-text">
+                    <p class="flow-text"> <%= story.title  %> </p>
+                    <p class="p-text">  <%= story.details.substr(0, 100) %> ....... </p>
+                    <div class="grey lighten-2 profile-badge card-avatar">
+                        <div class="avatar-stamp"> <img src="<%= story.user.avatar  %>" alt="" class="circle responsive-img"> </div>
+                        <a class="avatar-name" href="/users/stories/<%= story.user._id  %>"> <%= story.user.firstName  %> <%= story.user.lastName %></a>
                     </div>
                   </div>
-                  <div class="card-action" style="position: absolute; bottom: 0; width: 100%;">
+                  <div class="card-action" id="card-action-pos">
                     <a class="waves-effect waves-light btn grey" href="/users/story-view/<%= story._id %>">READ MORE</a>
                   </div>
                 </div>

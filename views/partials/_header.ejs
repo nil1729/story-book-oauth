@@ -26,31 +26,30 @@
               <% if(typeof user === 'undefined') {%> 
             <li><a href="/users/stories" class=""><i class="material-icons left">library_books</i>Public Stories</a></li>
               <% }else{ %>
-                <li><span style="margin-right: 10px;">Welcome <%= user.firstName %></span></li>
+                <li><span class="mr-10">Welcome <%= user.firstName %></span></li>
                 <li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
               <% } %> 
         </ul>
         </div>
       </nav>
     </div>
-    
     <ul id="slide-out" class="sidenav">
         
         <% if(typeof user === 'undefined') {%> 
             <li>
             <a class="btn waves-effect waves-light  red darken-2" href="/auth/google">
-                <i class="fab fa-google" style="color: aliceblue;"></i> <span>Login With Google</span>  
+                <i class="fab fa-google white-text"></i> <span>Login With Google</span>  
             </a>
         </li>
         <li><a href="/about"><i class="material-icons left">class</i>About</a></li>
         <li>
             <a href="/users/stories" class=""><i class="material-icons left">library_books</i>Public Stories</a></li>
             <% }else{ %>
-                <li style="display: flex; justify-content: flex-start; align-items: center; padding: 1em 2em;">
-                    <div style="height: 2.5em; width: 2.5em;">
+                <li class="d-flex-start p-1-2">
+                    <div class="avatar-stamp">
                         <img src="<%= user.avatar  %>" alt="" class="circle responsive-img">
                     </div> 
-                    <p class="center flow-text" style="margin-left: 1em;"><%= user.firstName %> <%= user.lastName %></p>
+                    <p class="center flow-text ml-1"><%= user.firstName %> <%= user.lastName %></p>
                 </li>
                 <li><a href="/users/dashboard" class=""><i class="fas fa-2x fa-user-cog"></i> Dashboard</a></li>
                 <li><a href="/users/stories/<%= user._id  %>"><i class="fas fa-2x fa-user-tag"></i> My Stories</a></li>

@@ -15,13 +15,13 @@
     
             <tbody>
               <% stories.forEach(story => { %>
-                <tr style="text-transform: capitalize;">
+                <tr class="capital-text">
                     <td> <a href="/users/story-view/<%= story._id %>"><%= story.title %> </a></td>
                     <td><%= story.createdAt  %></td>
                     <td><%= story.status %> </td>
                     <td>
                         <a class="waves-effect waves-light btn teal darken-1" href="/users/story/edit/<%= story._id %>"><i class="material-icons left">mode_edit</i>Edit</a>
-                        <form action="/users/story/delete/<%= story._id  %>?_method=DELETE" method="post" style="display: inline;">
+                        <form class="d-inline" action="/users/story/delete/<%= story._id  %>?_method=DELETE" method="post">
                             <button class="btn waves-effect waves-light red" type="submit">
                                 <i class="material-icons left">clear</i>Delete
                             </button>

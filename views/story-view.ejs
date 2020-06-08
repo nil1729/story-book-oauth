@@ -4,12 +4,12 @@
         <div class="col s12 m8">
             <h4><%= story.title  %>
                 <% if( typeof user !== 'undefined' && story.user._id.equals(user._id)){ %> 
-                <a href="/users/story/edit/<%= story._id %>"><i class="material-icons blue-text" style="font-size: 1.2em;">mode_edit</i></a>  </h4>
+                <a href="/users/story/edit/<%= story._id %>"><i class="material-icons blue-text p-l-text">mode_edit</i></a></h4>
                 <% } %> </h4>
                 <div class="card">
                 <div class="card-content">
                    <p class="grey-text"><%= story.createdAt %></p>
-                   <p style="font-size: 1.2em;"><%= story.details %></p>
+                   <p class="p-l-text"><%= story.details %></p>
                 </div>
             </div>
             <% if(story.allowComments) { %> 
@@ -27,9 +27,7 @@
                           >
                         <label for="first_name">Add Comment</label>
                     </div>
-                        <button class="btn waves-effect waves-light" type="submit">
-                            Submit
-                        </button>
+                        <button class="btn waves-effect waves-light" type="submit">Submit</button>
                     </form>
                 <% }else { %>
                     <h6>Please <a href="/auth/google">Login</a> to leave a Comment</h6>
@@ -39,19 +37,12 @@
             <% comments.forEach(comment => { %>
                 <div class="card">
                     <div class="card-content">
-                        <p style="font-size: 1.2em"><%= comment.comment  %> </p>
-                        <div style="
-                    width: fit-content;
-                    display: flex; 
-                    justify-content: space-evenly; 
-                    align-items: center;
-                    margin: 1em 0;
-                    border-radius: 30px;"
-                    class="grey lighten-2">
-                        <div style="height: 2em; width: 2em;">
+                        <p class="p-l-text"><%= comment.comment  %> </p>
+                        <div class="grey lighten-2 profile-badge m-1-0">
+                        <div class="avatar-stamp-comment">
                             <img src="<%= story.user.avatar  %>" alt="" class="circle responsive-img">
                         </div>
-                        <a style="margin: 0 10px 0 5px;" href="/users/stories/<%= story.user._id  %>">
+                        <a class="m-0-10-0-5" href="/users/stories/<%= story.user._id  %>">
                             <%= story.user.firstName  %> <%= story.user.lastName %>
                         </a>
                     </div>
@@ -62,12 +53,12 @@
             <% } %> 
         </div>
         <div class="col s12 m4">
-            <div class="card center" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="card center d-flex-column-center">
                 <div class="card-content">
                    <h5><%= story.user.firstName  %> <%= story.user.lastName %></h5>
                 </div>
-                <div class="card-image" style="height: 5em; width: 5em; margin-bottom: 1em;">
-                  <img src="<%= story.user.avatar %> " style="border-radius: 50%;" >
+                <div class="card-image card-img-profile">
+                  <img src="<%= story.user.avatar %> " id="border-circle">
                 </div>
                 <div class="card-action">
                   <a href="/users/stories/<%= story.user._id  %>">More From <%= story.user.firstName  %></a>

@@ -11,27 +11,28 @@
         <ul>
           <li><a class="grey-text text-lighten-3" href="/users/stories">Public Stories</a></li>
           <li><a class="grey-text text-lighten-3" href="/about">About</a></li>
+          <li><a class="grey-text text-lighten-3" target="_blank" href="https://github.com/nil1729">Source Code</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="footer-copyright">
-    <div class="container">
+    <div class="container center">
       © <span id="year"></span>  Story Books
-    <a class="grey-text text-lighten-4 right" href="">Source Code</a>
     </div>
   </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" integrity="sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=" crossorigin="anonymous"></script>
 <script>
+  const storyContainer = document.querySelector('.story-container');
      M.AutoInit();
      $(document).ready(function(){
       $('.modal').modal();
     });
     document.getElementById('year').innerHTML = new Date().getFullYear();
-    if(document.querySelector('.story-container').textContent.trim() === ''){
-      document.querySelector('.story-container').innerHTML = `
+    if(storyContainer && storyContainer.textContent.trim() === ''){
+      storyContainer.innerHTML = `
       <p class="flow-text grey-text">No Stories Published yet</p>
       `;
     }
