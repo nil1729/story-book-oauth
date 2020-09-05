@@ -18,24 +18,26 @@
   </div>
   <div class="footer-copyright">
     <div class="container center">
-      © <span id="year"></span>  Story Books
+      © <span id="year"></span> Story Books
     </div>
   </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" integrity="sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+  integrity="sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=" crossorigin="anonymous"></script>
 <script>
   const storyContainer = document.querySelector('.story-container');
-     M.AutoInit();
-     $(document).ready(function(){
-      $('.modal').modal();
-    });
-    document.getElementById('year').innerHTML = new Date().getFullYear();
-    if(storyContainer && storyContainer.textContent.trim() === ''){
-      storyContainer.innerHTML = `
+  M.AutoInit();
+  $(document).ready(function () {
+    $('.modal').modal();
+  });
+  document.getElementById('year').innerHTML = new Date().getFullYear();
+  if (storyContainer && storyContainer.textContent.trim() === '') {
+    storyContainer.innerHTML = `
       <p class="flow-text grey-text">No Stories Published yet</p>
       `;
-    }
+  }
 </script>
 </body>
+
 </html>

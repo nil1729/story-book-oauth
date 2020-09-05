@@ -3,42 +3,40 @@
     <div class="row">
         <div class="col s12 m8">
             <h4><%= story.title  %>
-                <% if( typeof user !== 'undefined' && story.user._id.equals(user._id)){ %> 
-                <a href="/users/story/edit/<%= story._id %>"><i class="material-icons blue-text p-l-text">mode_edit</i></a></h4>
-                <% } %> </h4>
-                <div class="card">
+                <% if( typeof user !== 'undefined' && story.user._id.equals(user._id)){ %>
+                <a href="/users/story/edit/<%= story._id %>"><i
+                        class="material-icons blue-text p-l-text">mode_edit</i></a></h4>
+            <% } %> </h4>
+            <div class="card">
                 <div class="card-content">
-                   <p class="grey-text"><%= story.createdAt %></p>
-                   <p class="p-l-text"><%= story.details %></p>
+                    <div id="details-html">
+                        <%- story.details %>
+                    </div><br>
+                    <p class="grey-text">Date: <%= story.createdAt %></p>
                 </div>
             </div>
-            <% if(story.allowComments) { %> 
+            <% if(story.allowComments) { %>
             <div class="card">
                 <div class="card-content">
                     <p class="grey-text flow-text">Comments</p>
-                    <% if(typeof user !== 'undefined') { %> 
+                    <% if(typeof user !== 'undefined') { %>
                     <form action="/users/stories/comments/<%= story._id %>" method="POST">
                         <div class="input-field">
-                        <input 
-                          required
-                          type="text"
-                          class="validate"
-                          name="comment"
-                          >
-                        <label for="first_name">Add Comment</label>
-                    </div>
+                            <input required type="text" class="validate" name="comment">
+                            <label for="first_name">Add Comment</label>
+                        </div>
                         <button class="btn waves-effect waves-light" type="submit">Submit</button>
                     </form>
-                <% }else { %>
+                    <% }else { %>
                     <h6>Please <a href="/auth/google">Login</a> to leave a Comment</h6>
-                <% } %>  
+                    <% } %>
                 </div>
             </div>
             <% comments.forEach(comment => { %>
-                <div class="card">
-                    <div class="card-content">
-                        <p class="p-l-text"><%= comment.comment  %> </p>
-                        <div class="grey lighten-2 profile-badge m-1-0">
+            <div class="card">
+                <div class="card-content">
+                    <p class="p-l-text"><%= comment.comment  %> </p>
+                    <div class="grey lighten-2 profile-badge m-1-0">
                         <div class="avatar-stamp-comment">
                             <img src="<%= comment.author.avatar  %>" alt="" class="circle responsive-img">
                         </div>
@@ -47,24 +45,24 @@
                         </a>
                     </div>
                     <p class="grey-text"><%= comment.createdAt %></p>
-                    </div>
                 </div>
+            </div>
             <%  }) %>
-            <% } %> 
+            <% } %>
         </div>
         <div class="col s12 m4">
             <div class="card center d-flex-column-center">
                 <div class="card-content">
-                   <h5><%= story.user.firstName  %> <%= story.user.lastName %></h5>
+                    <h5><%= story.user.firstName  %> <%= story.user.lastName %></h5>
                 </div>
                 <div class="card-image card-img-profile">
-                  <img src="<%= story.user.avatar %> " id="border-circle">
+                    <img src="<%= story.user.avatar %> " id="border-circle">
                 </div>
                 <div class="card-action">
-                  <a href="/users/stories/<%= story.user._id  %>">More From <%= story.user.firstName  %></a>
+                    <a href="/users/stories/<%= story.user._id  %>">More From <%= story.user.firstName  %></a>
                 </div>
             </div>
         </div>
     </div>
-</div> 
-<%- include ('./partials/_footer.ejs')  %>  
+</div>
+<%- include ('./partials/_footer.ejs')  %>

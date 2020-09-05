@@ -1,40 +1,41 @@
 <div class="row">
-    <div class="input-field col s12">
-      <input 
-        required
-        type="text"
-        class="validate"
-        name="title"
-        value="<%= typeof story!== 'undefined'? story.title : '' %>"
-        >
-      <label for="first_name">Title</label>
-    </div>
-    <div class="input-field col s12">
-        <select name="status" required>
-          <option value="" disabled>Choose your option</option> 
-          <% if(typeof story !== 'undefined' && story.status === 'private') { %>
-            <option value="public">Public</option>
-          <option value="private" selected>Private</option>
-          <% } else{ %>
-            <option value="public" selected>Public</option>
-            <option value="private">Private</option>
-          <% } %>  
-        </select>
-        <label>Story Privacy</label>
-      </div>
-      <div class="input-field col s12">
-        <label>
-          <input type="checkbox" class="filled-in" <%= typeof story === 'undefined' || story.allowComments ? 'checked' : '' %> name="allowComments" />
-          <span>Allow Comments</span>
-        </label>
-      </div>
-      <div class="input-field col s12 mt-4">
-        <textarea required name="details" class="materialize-textarea"><%= typeof story!== 'undefined'? story.details : '' %></textarea>
-        <label>Tell Us Your Story</label>
-      </div>
-      <div class="input-field col s12">
-      <button class="btn waves-effect waves-light" type="submit"><%= typeof story === 'undefined'? 'ADD' : 'Update'  %> 
-        <i class="material-icons right">send</i>
-      </button>
-    </div>
+  <div class="input-field col s12">
+    <input required type="text" class="validate" name="title"
+      value="<%= typeof story!== 'undefined'? story.title : '' %>">
+    <label for="first_name">Title</label>
+  </div>
+  <div class="input-field col s12">
+    <select name="status" required>
+      <option value="" disabled>Choose your option</option>
+      <% if(typeof story !== 'undefined' && story.status === 'private') { %>
+      <option value="public">Public</option>
+      <option value="private" selected>Private</option>
+      <% } else{ %>
+      <option value="public" selected>Public</option>
+      <option value="private">Private</option>
+      <% } %>
+    </select>
+    <label>Story Privacy</label>
+  </div>
+  <div class="input-field col s12">
+    <label>
+      <input type="checkbox" class="filled-in"
+        <%= typeof story === 'undefined' || story.allowComments ? 'checked' : '' %> name="allowComments" />
+      <span>Allow Comments</span>
+    </label>
+  </div>
+  <div class="input-field col s12 mt-4">
+    <textarea id='text-editor' required name="details"
+      class="materialize-textarea"><%= typeof story!== 'undefined'? story.details : '' %></textarea>
+  </div>
+  <!-- <button type='button'>TEST</button> -->
+  <div class="input-field col s12">
+    <button class="btn waves-effect waves-light" type="submit"><%= typeof story === 'undefined'? 'ADD' : 'Update'  %>
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
 </div>
+<script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('details');
+</script>
