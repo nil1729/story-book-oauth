@@ -12,7 +12,7 @@ router.get("/dashboard", checkAuthentication, async (req, res) => {
   const stories = await Story.find({
     user: req.user,
   }).sort({
-    dbDate: -1,
+    updatedAt: -1,
   });
   res.render("dashboard", {
     user: req.user,
@@ -29,7 +29,12 @@ router.get("/story/new", checkAuthentication, (req, res) => {
 
 // Story Create POST
 router.post("/story/new", checkAuthentication, async (req, res) => {
-  let { title, status, allowComments, details } = req.body;
+  let {
+    title,
+    status,
+    allowComments,
+    details
+  } = req.body;
 
   if (typeof allowComments === "undefined") {
     allowComments = false;
@@ -42,7 +47,6 @@ router.post("/story/new", checkAuthentication, async (req, res) => {
     details,
     allowComments,
     user: req.user,
-    createdAt: moment(new Date()).format("MMMM Do YYYY"),
   };
   try {
     let story = new Story(newStory);
@@ -64,7 +68,12 @@ router.get("/story/edit/:id", checkAuthorization, async (req, res) => {
 
 // Story Edit
 router.put("/story/edit/:id", checkAuthorization, async (req, res) => {
-  let { title, status, allowComments, details } = req.body;
+  let {
+    title,
+    status,
+    allowComments,
+    details
+  } = req.body;
   if (typeof allowComments === "undefined") {
     allowComments = false;
   } else {
@@ -102,19 +111,28 @@ router.get("/story-view/:id", async (req, res) => {
   try {
     const story = await Story.findById(req.params.id).populate("user");
     const comments = await Comment.find({
-      story: story._id,
-    })
+        story: story._id,
+      })
       .populate("author")
       .sort({
-        dbDate: -1,
+        updatedAt: -1,
       });
     if (
       (story && story.status === "public") ||
       (story.status === "private" && story.user.equals(req.user._id))
     ) {
+
       res.render("story-view", {
-        story,
-        comments,
+        story: {
+          ...story._doc,
+          createdAt: moment(story.createdAt).format("MMMM Do YYYY, h:mm A")
+        },
+        comments: comments.map(c => {
+          return {
+            ...c._doc,
+            createdAt: c.createdAt = moment(c.createdAt).format("MMMM Do YYYY, h:mm A")
+          }
+        }),
         user: req.user,
       });
     } else {
@@ -130,7 +148,7 @@ router.get("/story-view/:id", async (req, res) => {
 router.get("/stories", async (req, res) => {
   try {
     const stories = await Story.find().populate("user").sort({
-      dbDate: -1,
+      updatedAt: -1,
     });
     res.render("public-stories", {
       user: req.user,
@@ -146,11 +164,11 @@ router.get("/stories", async (req, res) => {
 router.get("/stories/:id", async (req, res) => {
   try {
     const stories = await Story.find({
-      user: req.params.id,
-    })
+        user: req.params.id,
+      })
       .populate("user")
       .sort({
-        dbDate: -1,
+        updatedAt: -1,
       });
     const user = await User.findById(req.params.id);
     res.render("public-stories", {
@@ -168,7 +186,6 @@ router.post("/stories/comments/:id", checkAuthentication, async (req, res) => {
   const newComment = {
     author: req.user._id,
     comment: req.body.comment,
-    createdAt: moment(new Date()).format("MMMM Do YYYY"),
     story: req.params.id,
   };
   try {

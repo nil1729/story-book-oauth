@@ -4,23 +4,16 @@ const commentSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
-    story:{
+    story: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Story"
     },
     comment: {
         type: String,
         required: true
-    },
-    dbDate:{
-        type: Date,
-        required: true,
-        default: new Date()
-    },
-    createdAt: {
-        type: String,
-        required: true
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model("Comment", commentSchema);

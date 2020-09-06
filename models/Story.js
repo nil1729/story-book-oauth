@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const storySchema = mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: true
     },
-    status:{
+    status: {
         type: String,
         required: true,
     },
@@ -13,23 +13,16 @@ const storySchema = mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    details:{
+    details: {
         type: String,
         required: true,
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    },
-    createdAt: {
-        type: String,
-        required: true
-    },
-    dbDate:{
-        type: Date,
-        required: true,
-        default: Date.now()
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model("Story", storySchema);

@@ -11,8 +11,9 @@
                 <div class="card-content">
                     <div id="details-html">
                         <%- story.details %>
-                    </div><br>
-                    <p class="grey-text">Date: <%= story.createdAt %></p>
+                    </div>
+                    <div class="gap"></div>
+                    <p class="grey-text right-align"><%= story.createdAt  %> </p>
                 </div>
             </div>
             <% if(story.allowComments) { %>
