@@ -1,12 +1,19 @@
 ## STORY BOOK (Social Media Type)
 ### Story Books is a Web App built using Express and Google oAuth for authentication.
 #### This Site is live [here](https://story--book.herokuapp.com/).
-#### Project idea adapted from a Udemy Course by [Traversy Media](https://www.udemy.com/user/brad-traversy/).
+#### Project idea adapted from a [Traversy Media](https://www.youtube.com/watch?v=SBvmnHTQIPY&t=5800s).
 
 ---
 
-**TODO**
-1. Tranform Text area with Text Editor
+**Description**
+
+1. ExpressJS is used as a NodeJS framework.
+2. Materiaize CSS for Styling the Site.
+3. EJS is used for HTML Templates.
+4. Gooogle OAuth is used for Authentication.
+5. Text Editor is made using by CkEditor CDN.
+6. MongoDB is used as a Database to Store Users, Stories, Comments etc.
+
 
 ---
 
@@ -30,6 +37,6 @@
 
 ---
 
-#### Made With :heart: by [Nilanjan Deb](https://github.com/nil1729).
+Thank You :smiley:
 
 
